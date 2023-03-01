@@ -12,33 +12,51 @@ public class Main {
         short lyhikenumber = 312;
         long pikknumber = 123141535225L;
 
-        int playerXCoordinaate = 3; // taisarvuline number
-        int playerYCoordinaate = 3;
-        int dragonXCoordinaate = 6;
-        int dragonYCoordinaate = 2;
-        int orcXCoordinaate = 5;
-        int orcYCoordinaate = 1;
+        int worldWidth = 10;
+        int worldHeight = 5;
+
+        int playerXCoordinaate = getRandomCoordinaate(worldWidth); // taisarvuline number
+        int playerYCoordinaate = getRandomCoordinaate(worldHeight); // castimine ehk teisendamine yhest tyybist teise
+        char playerSymbol = 'X';
+        int dragonXCoordinaate = getRandomCoordinaate(worldWidth);
+        int dragonYCoordinaate = getRandomCoordinaate(worldHeight);
+        char dragonSymbol = 'D';
+        int orcXCoordinaate = getRandomCoordinaate(worldWidth);
+        int orcYCoordinaate = getRandomCoordinaate(worldHeight);
+        char orcSymbol = 'O';
 
         // algväärtus   kuni  iga tsükkel
-        for (int y = 0; y < 5; y++) {
+        for (int y = 0; y < worldHeight; y++) {
             System.out.println();
-            for (int x = 0; x < 10; x++) {
-                if (y == 0 || y == 4){
+            for (int x = 0; x < worldWidth; x++) {
+                if (y == 0 || y == worldHeight-1){
                     System.out.print("-");
-                } else if (x == 0 || x == 9){
+                } else if (x == 0 || x == worldWidth-1){
                     System.out.print("|");
                 } else {
-                    if (playerXCoordinaate == x && playerYCoordinaate == y){
-                        System.out.print("X");
-                    } else if (dragonXCoordinaate == x && orcYCoordinaate == y){
-                        System.out.print("D");
-                    } else if (orcXCoordinaate == x && orcYCoordinaate == y){
-                        System.out.print("O");
-                    } else {
-                        System.out.print(" ");
-                    }
+                    printCharacters (playerXCoordinaate, playerYCoordinaate, playerSymbol,
+                            dragonXCoordinaate, dragonYCoordinaate, dragonSymbol,
+                            orcXCoordinaate, orcYCoordinaate, orcSymbol, y, x);
                 }
             }
+        }
+    }
+
+    private static int getRandomCoordinaate(int worldDimension) {
+        return (int) (Math.random() * (worldDimension - 2) + 1);
+    }
+    private static void printCharacters (int playerXCoordinaate, int playerYCoordinaate, char playerSymbol,
+                                         int dragonXCoordinaate, int dragonYCoordinaate, char dragonSymbol,
+                                         int orcXCoordinaate, int orcYCoordinaate, char orcSymbol,
+                                         int mapY, int mapX) {
+        if (playerXCoordinaate == mapX && playerYCoordinaate == mapY){
+            System.out.print(playerSymbol);
+        } else if (dragonXCoordinaate == mapX && dragonYCoordinaate == mapY){
+            System.out.print(dragonSymbol);
+        } else if (orcXCoordinaate == mapX && orcYCoordinaate == mapY){
+            System.out.print(orcSymbol);
+        } else {
+            System.out.print(" ");
         }
     }
 }

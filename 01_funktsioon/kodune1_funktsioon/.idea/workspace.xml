@@ -4,19 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b4c851b1-012d-4a68-9da8-39b7f151e348" name="Changes" comment="" />
+    <list default="true" id="b47dbdd4-6364-4090-9b09-4adace3549b2" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2LXp6qBlJlCLznUcGsLnRZST43p" />
+  <component name="ProjectId" id="2LbzI4vqWydlkObKSrpxojGLalR" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -36,15 +36,14 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="b4c851b1-012d-4a68-9da8-39b7f151e348" name="Changes" comment="" />
-      <created>1676027109605</created>
+      <changelist id="b47dbdd4-6364-4090-9b09-4adace3549b2" name="Changes" comment="" />
+      <created>1676154500576</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1676027109605</updated>
-      <workItem from="1676027111122" duration="6802000" />
-      <workItem from="1676118987733" duration="606000" />
-      <workItem from="1676153154939" duration="1327000" />
-      <workItem from="1676154600395" duration="177000" />
+      <updated>1676154500576</updated>
+      <workItem from="1676154501702" duration="658000" />
+      <workItem from="1676628179128" duration="631000" />
+      <workItem from="1677702783439" duration="1549000" />
     </task>
     <servers />
   </component>
