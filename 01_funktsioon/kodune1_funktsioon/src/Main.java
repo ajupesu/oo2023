@@ -6,7 +6,7 @@ public class Main {
         int faktoriaal_tulemus = faktoriaal(5);
         System.out.println("Faktoriaal arvust 5 on " + faktoriaal_tulemus);
 
-        String palindroom = "aias sadas saia";
+        String palindroom = "kirik";
         boolean palindroom_tulemus = kas_on_palindroom(palindroom);
         System.out.println(palindroom + " on palindroom: " + palindroom_tulemus);
     }

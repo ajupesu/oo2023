@@ -1,62 +1,68 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
+
 public class Main {
-    //fori
-    //sout
     public static void main(String[] args) {
         System.out.println("Hello world!");
-        String sonaline = "sonaline muutuja";
-        char taheline = 's'; // uks taht
-        double komakohaga = 123.534;
-        float komakohaga2 = 31.3431F;
-        boolean kahendv22rtus = true; // 0 ja 1
-        byte pisikenumber = 100;
-        short lyhikenumber = 312;
-        long pikknumber = 123141535225L;
 
-        int worldWidth = 10;
-        int worldHeight = 5;
+        //String sonaline = "sõnaline muutuja";
+        //char taheline = 'c';
+        //double komakohaga = 341.432321;
+        //float komakohaga2 = 4321.23541F; // Ei kasutata väga
+        //boolean kahendv22rtus = true; // 0 ja 1
+        //byte pisikeNumber = 127; // väiksem arv, kuni 127
+        //short lyhikeNumber = 32767; // kuni 32767
+        //long pikkNumber = 124235423598765L; //Kui on liiga pikk (punane joon all), siis tuleb 'L' lõppu panna
 
-        int playerXCoordinaate = getRandomCoordinaate(worldWidth); // taisarvuline number
-        int playerYCoordinaate = getRandomCoordinaate(worldHeight); // castimine ehk teisendamine yhest tyybist teise
-        char playerSymbol = 'X';
-        int dragonXCoordinaate = getRandomCoordinaate(worldWidth);
-        int dragonYCoordinaate = getRandomCoordinaate(worldHeight);
-        char dragonSymbol = 'D';
-        int orcXCoordinaate = getRandomCoordinaate(worldWidth);
-        int orcYCoordinaate = getRandomCoordinaate(worldHeight);
-        char orcSymbol = 'O';
+        Scanner scanner = new Scanner(System.in); //.in on konstruktor
+        // muutuja scanner sai enda sisse kõik omadused mis on Scanner klassi sees
+        // cmd + hiire klikk  avab Scanneri klassi
+        /*String input = scanner.nextLine();*/
+        // kursorit peal hoides .nextLine(), näame funktsiooni lühikirjeldust ,ning et funktsioon returnib String andmetüübi
+        // sellepärast me ei saagi salvestada seda teise andemtääbi muutuja sisse (nagu näiteks int, double jne.)
+        /*double proovInput = scanner.nextLine();*/ // Kuna returnitav andmetääp on String, siis IntelliJ toob errori
 
-        // algväärtus   kuni  iga tsükkel
-        for (int y = 0; y < worldHeight; y++) {
+        World world = new World(15, 7);
+
+        // Nagu ennem kirjas siin siin muutuja player sai kõik Player klassi omadused
+        Player player = new Player(world.width, world.height);
+        Dragon dragon = new Dragon(world.width, world.height);
+        Orc orc = new Orc(world.width, world.height);
+
+        Item sword = new Item(10, 1,"Mõõk", world.width, world.height);
+        Item hammer = new Item(5, 3,"Haamer", world.width, world.height);
+        Item boot = new Item(1, 10,"Saabas", world.width, world.height);
+
+        //import! java.util.list
+        //import: java.util.Arraylist
+        //import: arrays
+        //List--> muudetav
+        List<Item> items = new ArrayList<>(Arrays.asList(sword, hammer, boot));
+
+        // Item[] items1 = {sword, hammer, boot};
+
+        world.printMap(world.width, world.height,
+                player.xCoordinate, player.yCoordinate, player.symbol,
+                dragon.xCoordinate, dragon.yCoordinate, dragon.symbol,
+                orc.xCoordinate, orc.yCoordinate, orc.symbol, items);
+        String input = scanner.nextLine();
+
+        while (!input.equals("end")) {
+            player.move(input, world);
+            //switch (input) {
+            //    case "w" -> playerYCoordinate = playerXCoordinate - 1;
+            //    case "s" -> playerYCoordinate = playerYCoordinate + 1;
+            //    case "a" -> playerXCoordinate = playerXCoordinate - 1;
+            //    case "d" -> playerXCoordinate = playerXCoordinate + 1;
+            //}
+            world.printMap(world.width, world.height,
+                    player.xCoordinate, player.yCoordinate, player.symbol,
+                    dragon.xCoordinate, dragon.yCoordinate, dragon.symbol,
+                    orc.xCoordinate, orc.yCoordinate, orc.symbol, items);
             System.out.println();
-            for (int x = 0; x < worldWidth; x++) {
-                if (y == 0 || y == worldHeight-1){
-                    System.out.print("-");
-                } else if (x == 0 || x == worldWidth-1){
-                    System.out.print("|");
-                } else {
-                    printCharacters (playerXCoordinaate, playerYCoordinaate, playerSymbol,
-                            dragonXCoordinaate, dragonYCoordinaate, dragonSymbol,
-                            orcXCoordinaate, orcYCoordinaate, orcSymbol, y, x);
-                }
-            }
-        }
-    }
-
-    private static int getRandomCoordinaate(int worldDimension) {
-        return (int) (Math.random() * (worldDimension - 2) + 1);
-    }
-    private static void printCharacters (int playerXCoordinaate, int playerYCoordinaate, char playerSymbol,
-                                         int dragonXCoordinaate, int dragonYCoordinaate, char dragonSymbol,
-                                         int orcXCoordinaate, int orcYCoordinaate, char orcSymbol,
-                                         int mapY, int mapX) {
-        if (playerXCoordinaate == mapX && playerYCoordinaate == mapY){
-            System.out.print(playerSymbol);
-        } else if (dragonXCoordinaate == mapX && dragonYCoordinaate == mapY){
-            System.out.print(dragonSymbol);
-        } else if (orcXCoordinaate == mapX && orcYCoordinaate == mapY){
-            System.out.print(orcSymbol);
-        } else {
-            System.out.print(" ");
+            input = scanner.nextLine();
         }
     }
 }
